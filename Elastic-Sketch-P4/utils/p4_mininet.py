@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # Copyright 2013-present Barefoot Networks, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +14,14 @@
 # limitations under the License.
 #
 
-from mininet.net import Mininet
-from mininet.node import Switch, Host
-from mininet.log import setLogLevel, info, error, debug
-from mininet.moduledeps import pathCheck
-from sys import exit
 import os
 import tempfile
-import socket
+from sys import exit
 from time import sleep
 
+from mininet.log import debug, error, info
+from mininet.moduledeps import pathCheck
+from mininet.node import Host, Switch
 from netstat import check_listening_on_port
 
 SWITCH_START_TIMEOUT = 10 # seconds
@@ -120,7 +119,7 @@ class P4Switch(Switch):
         "Start up a new P4 switch"
         info("Starting P4 switch {}.\n".format(self.name))
         args = [self.sw_path]
-        for port, intf in self.intfs.items():
+        for port, intf in list(self.intfs.items()):
             if not intf.IP():
                 args.extend(['-i', str(port) + "@" + intf.name])
         if self.pcap_dump:

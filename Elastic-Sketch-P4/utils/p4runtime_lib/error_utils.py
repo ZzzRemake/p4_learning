@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # Copyright 2013-present Barefoot Networks, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,10 +16,10 @@
 
 import sys
 
-from google.rpc import status_pb2, code_pb2
 import grpc
+from google.rpc import code_pb2, status_pb2
 from p4.v1 import p4runtime_pb2
-from p4.v1 import p4runtime_pb2_grpc
+
 
 # Used to indicate that the gRPC error Status object returned by the server has
 # an incorrect format.
@@ -35,6 +36,10 @@ class P4RuntimeErrorFormatException(Exception):
 # index of the operation in the batch that failed and the second element being
 # the p4.Error Protobuf message.
 def parseGrpcErrorBinaryDetails(grpc_error):
+    # Check if grpc_error is None or not an instance of grpc.RpcError
+    if not grpc_error or not isinstance(grpc_error, grpc.RpcError):
+        raise P4RuntimeErrorFormatException(f"Invalid gRPC error object: {grpc_error}")
+        
     if grpc_error.code() != grpc.StatusCode.UNKNOWN:
         return None
 
@@ -73,20 +78,20 @@ def parseGrpcErrorBinaryDetails(grpc_error):
 # batch) in order to print error code + user-facing message. See P4Runtime
 # documentation for more details on error-reporting.
 def printGrpcError(grpc_error):
-    print "gRPC Error", grpc_error.details(),
+    print("gRPC Error", grpc_error.details(), end=' ')
     status_code = grpc_error.code()
-    print "({})".format(status_code.name),
+    print("({})".format(status_code.name), end=' ')
     traceback = sys.exc_info()[2]
-    print "[{}:{}]".format(
-        traceback.tb_frame.f_code.co_filename, traceback.tb_lineno)
+    print("[{}:{}]".format(
+        traceback.tb_frame.f_code.co_filename, traceback.tb_lineno))
     if status_code != grpc.StatusCode.UNKNOWN:
         return
     p4_errors = parseGrpcErrorBinaryDetails(grpc_error)
     if p4_errors is None:
         return
-    print "Errors in batch:"
+    print("Errors in batch:")
     for idx, p4_error in p4_errors:
         code_name = code_pb2._CODE.values_by_number[
             p4_error.canonical_code].name
-        print "\t* At index {}: {}, '{}'\n".format(
-            idx, code_name, p4_error.message)
+        print("\t* At index {}: {}, '{}'\n".format(
+            idx, code_name, p4_error.message))
