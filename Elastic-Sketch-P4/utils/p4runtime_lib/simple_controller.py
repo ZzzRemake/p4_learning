@@ -100,7 +100,7 @@ def check_switch_conf(sw_conf, workdir):
                     raise InvalidFileContentException(f"Invalid JSON content in {real_path}: {e}")
 
 
-def program_switch(addr, device_id, sw_conf_file, workdir, proto_dump_fpath, runtime_json):
+def program_switch(addr, device_id, sw_conf_file, workdir, proto_dump_fpath):
     sw_conf = json_load_byteified(sw_conf_file)
     try:
         check_switch_conf(sw_conf=sw_conf, workdir=workdir)
@@ -138,7 +138,6 @@ def program_switch(addr, device_id, sw_conf_file, workdir, proto_dump_fpath, run
             info("Inserting %d table entries..." % len(table_entries))
             for entry in table_entries:
                 info(tableEntryToString(entry))
-                validateTableEntry(entry, p4info_helper, runtime_json)
                 insertTableEntry(sw, entry, p4info_helper)
 
         if 'multicast_group_entries' in sw_conf:
@@ -158,26 +157,6 @@ def program_switch(addr, device_id, sw_conf_file, workdir, proto_dump_fpath, run
     finally:
         sw.shutdown()
 
-
-def validateTableEntry(flow, p4info_helper, runtime_json):
-    table_name = flow['table']
-    match_fields = flow.get('match')  # None if not found
-    priority = flow.get('priority')  # None if not found
-    match_types_with_priority = [
-        p4info_pb2.MatchField.TERNARY,
-        p4info_pb2.MatchField.RANGE,
-        p4info_pb2.MatchField.OPTIONAL
-    ]
-    if match_fields is not None and (priority is None or priority == 0):
-        for match_field_name, _ in match_fields.items():
-            p4info_match = p4info_helper.get_match_field(
-                table_name, match_field_name)
-            match_type = p4info_match.match_type
-            if match_type in match_types_with_priority:
-                raise AssertionError(
-                    "non-zero 'priority' field is required for all entries for table {} in {}"
-                    .format(table_name, runtime_json)
-                )
 
 
 def insertTableEntry(sw, flow, p4info_helper):

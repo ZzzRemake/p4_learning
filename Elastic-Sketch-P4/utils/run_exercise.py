@@ -304,7 +304,7 @@ class ExerciseRunner:
             P4Runtime, depending if any command or runtime JSON files were
             provided for the switches.
         """
-        for sw_name, sw_dict in self.switches.iteritems():
+        for sw_name, sw_dict in self.switches.items():
             if 'cli_input' in sw_dict:
                 self.program_switch_cli(sw_name, sw_dict)
             if 'runtime_json' in sw_dict:
@@ -319,7 +319,7 @@ class ExerciseRunner:
         """
         for host_name in self.topo.hosts():
             h = self.net.get(host_name)
-            h_iface = h.intfs.values()[0]
+            h_iface = list(h.intfs.values())[0]
             link = h_iface.link
 
             sw_iface = link.intf1 if link.intf1 != h_iface else link.intf2
