@@ -1,0 +1,400 @@
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 37946922
+    name: "MyIngress.ip_debug"
+    alias: "ip_debug"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.srcAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "hdr.ipv4.protocol"
+    bitwidth: 8
+    match_type: EXACT
+  }
+  match_fields {
+    id: 4
+    name: "hdr.query.count"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  match_fields {
+    id: 5
+    name: "hdr.query.flow_proto"
+    bitwidth: 8
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 48476112
+    name: "MyIngress.ipv4_static"
+    alias: "ipv4_static"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.protocol"
+    bitwidth: 8
+    match_type: EXACT
+  }
+  action_refs {
+    id: 25411316
+  }
+  action_refs {
+    id: 23009831
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 48468519
+    name: "MyEgress.cq.count_debug"
+    alias: "count_debug"
+  }
+  match_fields {
+    id: 1
+    name: "srcIP"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "dstIP"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "ip_protocol"
+    bitwidth: 8
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 39676806
+    name: "MyEgress.cms_debug"
+    alias: "cms_debug"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ha_r1"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "meta.ha_r2"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "meta.ha_r3"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 4
+    name: "meta.qc_r1"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 5
+    name: "meta.qc_r2"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 6
+    name: "meta.qc_r3"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 7
+    name: "meta.cms_freq_estimate"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 8
+    name: "meta.my_flowID"
+    bitwidth: 72
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 35909259
+    name: "MyEgress.heavy_part_debug"
+    alias: "heavy_part_debug"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ha_heavy"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "meta.ha_tuple.flowID"
+    bitwidth: 72
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "meta.ha_tuple.p_vote"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 4
+    name: "meta.ha_tuple.flag"
+    bitwidth: 1
+    match_type: EXACT
+  }
+  match_fields {
+    id: 5
+    name: "meta.ha_tuple.total_vote"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 48936160
+    name: "MyEgress.count_query_debug"
+    alias: "count_query_debug"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.query.count"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "hdr.query.flow_proto"
+    bitwidth: 8
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21257015
+  }
+  size: 1024
+}
+actions {
+  preamble {
+    id: 21257015
+    name: "NoAction"
+    alias: "NoAction"
+    annotations: "@noWarn(\"unused\")"
+  }
+}
+actions {
+  preamble {
+    id: 25652968
+    name: "MyIngress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 25411316
+    name: "MyIngress.query_forward"
+    alias: "query_forward"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 23009831
+    name: "MyIngress.caida_forward"
+    alias: "caida_forward"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 29349898
+    name: "MyEgress.cq.min_cnt"
+    alias: "cq.min_cnt"
+  }
+}
+actions {
+  preamble {
+    id: 24692137
+    name: "MyEgress.compute_flow_id"
+    alias: "compute_flow_id"
+  }
+}
+actions {
+  preamble {
+    id: 29424516
+    name: "MyEgress.compute_reg_index"
+    alias: "compute_reg_index"
+  }
+}
+actions {
+  preamble {
+    id: 31560783
+    name: "MyEgress.heavy_part_init"
+    alias: "heavy_part_init"
+  }
+}
+actions {
+  preamble {
+    id: 28401288
+    name: "MyEgress.min_cnt"
+    alias: "MyEgress.min_cnt"
+  }
+}
+registers {
+  preamble {
+    id: 376537898
+    name: "heavy_counters_flowID"
+    alias: "heavy_counters_flowID"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 72
+      }
+    }
+  }
+  size: 100
+}
+registers {
+  preamble {
+    id: 369579969
+    name: "heavy_counters_p_vote"
+    alias: "heavy_counters_p_vote"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 100
+}
+registers {
+  preamble {
+    id: 385643314
+    name: "heavy_counters_flag"
+    alias: "heavy_counters_flag"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 100
+}
+registers {
+  preamble {
+    id: 378942659
+    name: "heavy_counters_total_vote"
+    alias: "heavy_counters_total_vote"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 100
+}
+registers {
+  preamble {
+    id: 370599889
+    name: "cms_r1"
+    alias: "cms_r1"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1024
+}
+registers {
+  preamble {
+    id: 374621260
+    name: "cms_r2"
+    alias: "cms_r2"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1024
+}
+registers {
+  preamble {
+    id: 381558560
+    name: "cms_r3"
+    alias: "cms_r3"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1024
+}
+type_info {
+}
