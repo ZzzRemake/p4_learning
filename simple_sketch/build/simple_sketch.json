@@ -1,0 +1,4997 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["tmp", 72, false],
+        ["tmp_0", 10, false],
+        ["tmp_1", 72, false],
+        ["tmp_2", 10, false],
+        ["tmp_3", 72, false],
+        ["tmp_4", 10, false],
+        ["tmp_5", 72, false],
+        ["tmp_6", 10, false],
+        ["tmp_7", 72, false],
+        ["tmp_8", 10, false],
+        ["tmp_9", 72, false],
+        ["tmp_10", 10, false],
+        ["tmp_11", 32, false],
+        ["tmp_12", 32, false],
+        ["tmp_13", 32, false],
+        ["tmp_14", 32, false],
+        ["tmp_15", 32, false],
+        ["tmp_16", 72, false],
+        ["tmp_17", 10, false],
+        ["tmp_18", 72, false],
+        ["tmp_19", 10, false],
+        ["tmp_20", 72, false],
+        ["tmp_21", 10, false],
+        ["tmp_22", 72, false],
+        ["tmp_23", 10, false],
+        ["is_heavy_processed_0", 1, false],
+        ["cq_has_lp", 1, false],
+        ["cq_flowID", 72, false],
+        ["cq_ha_heavy", 32, false],
+        ["cq_ha_cms_r1", 32, false],
+        ["cq_ha_cms_r2", 32, false],
+        ["cq_ha_cms_r3", 32, false],
+        ["cq_query_r1", 32, false],
+        ["cq_query_r2", 32, false],
+        ["cq_query_r3", 32, false],
+        ["cq_hp_est", 32, false],
+        ["cq_lp_est", 32, false],
+        ["custom_metadata_t._srcIP0", 32, false],
+        ["custom_metadata_t._dstIP1", 32, false],
+        ["custom_metadata_t._protocol2", 8, false],
+        ["custom_metadata_t._my_flowID3", 72, false],
+        ["custom_metadata_t._my_flow_cnt4", 32, false],
+        ["custom_metadata_t._ha_r15", 32, false],
+        ["custom_metadata_t._ha_r26", 32, false],
+        ["custom_metadata_t._ha_r37", 32, false],
+        ["custom_metadata_t._ha_heavy8", 32, false],
+        ["custom_metadata_t._ha_tuple_flowID9", 72, false],
+        ["custom_metadata_t._ha_tuple_p_vote10", 32, false],
+        ["custom_metadata_t._ha_tuple_flag11", 1, false],
+        ["custom_metadata_t._ha_tuple_total_vote12", 32, false],
+        ["custom_metadata_t._qc_r113", 32, false],
+        ["custom_metadata_t._qc_r214", 32, false],
+        ["custom_metadata_t._qc_r315", 32, false],
+        ["custom_metadata_t._freq_estimate16", 32, false],
+        ["custom_metadata_t._cms_freq_estimate17", 32, false],
+        ["_padding_1", 1, false]
+      ]
+    },
+    {
+      "name" : "heavy_tuple",
+      "id" : 1,
+      "fields" : [
+        ["flowID", 72, false],
+        ["p_vote", 32, false],
+        ["flag", 1, false],
+        ["total_vote", 32, false],
+        ["_padding", 7, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 2,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["instance_type", 32, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["mcast_grp", 16, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["priority", 3, false],
+        ["_padding_0", 3, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 3,
+      "fields" : [
+        ["dstAddr", 48, false],
+        ["srcAddr", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 4,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["diffserv", 8, false],
+        ["totalLen", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["fragOffset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdrChecksum", 16, false],
+        ["srcAddr", 32, false],
+        ["dstAddr", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv4_option_t",
+      "id" : 5,
+      "fields" : [
+        ["copyFlag", 1, false],
+        ["optClass", 2, false],
+        ["option", 5, false]
+      ]
+    },
+    {
+      "name" : "query_t",
+      "id" : 6,
+      "fields" : [
+        ["count", 16, false],
+        ["flow_proto", 8, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "cq_ha_tuple",
+      "id" : 0,
+      "header_type" : "heavy_tuple",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "scalars",
+      "id" : 1,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 2,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 3,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 4,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4_option",
+      "id" : 5,
+      "header_type" : "ipv4_option_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "query",
+      "id" : 6,
+      "header_type" : "query_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 0],
+    ["PacketTooShort", 1],
+    ["NoMatch", 2],
+    ["StackOutOfBounds", 3],
+    ["HeaderTooShort", 4],
+    ["ParserTimeout", 5],
+    ["ParserInvalidArgument", 6],
+    ["IPHeaderTooShort", 7]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0002",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0001",
+              "mask" : null,
+              "next_state" : "parse_ethernet"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_port"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ethernet",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x3f",
+              "mask" : null,
+              "next_state" : "parse_ipv4_option"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4_option",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4_option"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x1f",
+              "mask" : null,
+              "next_state" : "parse_query"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4_option", "option"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_query",
+          "id" : 4,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "query"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 609,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["ethernet", "ipv4", "ipv4_option", "query"],
+      "primitives" : []
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [
+    {
+      "name" : "heavy_counters_flowID",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 38,
+        "column" : 44,
+        "source_fragment" : "heavy_counters_flowID"
+      },
+      "size" : 100,
+      "bitwidth" : 72
+    },
+    {
+      "name" : "heavy_counters_p_vote",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 39,
+        "column" : 44,
+        "source_fragment" : "heavy_counters_p_vote"
+      },
+      "size" : 100,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "heavy_counters_flag",
+      "id" : 2,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 40,
+        "column" : 43,
+        "source_fragment" : "heavy_counters_flag"
+      },
+      "size" : 100,
+      "bitwidth" : 1
+    },
+    {
+      "name" : "heavy_counters_total_vote",
+      "id" : 3,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 41,
+        "column" : 44,
+        "source_fragment" : "heavy_counters_total_vote"
+      },
+      "size" : 100,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "cms_r1",
+      "id" : 4,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 44,
+        "column" : 41,
+        "source_fragment" : "cms_r1"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "cms_r2",
+      "id" : 5,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 45,
+        "column" : 41,
+        "source_fragment" : "cms_r2"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "cms_r3",
+      "id" : 6,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 46,
+        "column" : 41,
+        "source_fragment" : "cms_r3"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
+    }
+  ],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_0"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_0",
+      "id" : 1,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_1"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_2"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_1",
+      "id" : 2,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_3"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_4"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_2",
+      "id" : 3,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_5"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_6"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_3",
+      "id" : 4,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_7"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_8"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_4",
+      "id" : 5,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_9"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_10"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_5",
+      "id" : 6,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_16"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_17"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_6",
+      "id" : 7,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_18"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_19"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_7",
+      "id" : 8,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_20"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_21"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_8",
+      "id" : 9,
+      "algo" : "crc16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_22"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "tmp_23"]
+        }
+      ]
+    },
+    {
+      "name" : "calc_9",
+      "id" : 10,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 587,
+        "column" : 1,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ihl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "diffserv"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "totalLen"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "flags"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "fragOffset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ttl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "srcAddr"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dstAddr"]
+        }
+      ]
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 216,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.query_forward",
+      "id" : 3,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 234,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.caida_forward",
+      "id" : 4,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 238,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "NoAction",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyEgress.cq.min_cnt",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_lp_est"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "?",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "cq_query_r3"]
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "?",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_query_r1"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_query_r2"]
+                      },
+                      "cond" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "<",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "cq_query_r1"]
+                          },
+                          "right" : {
+                            "type" : "field",
+                            "value" : ["scalars", "cq_query_r2"]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cond" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "?",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "cq_query_r1"]
+                          },
+                          "right" : {
+                            "type" : "field",
+                            "value" : ["scalars", "cq_query_r2"]
+                          },
+                          "cond" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["scalars", "cq_query_r1"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "cq_query_r2"]
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_query_r3"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 283,
+            "column" : 33,
+            "source_fragment" : "mincnt, in bit<32> cnt1, in bit<32> cnt2, ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.compute_flow_id",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._srcIP0"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "srcAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 434,
+            "column" : 8,
+            "source_fragment" : "meta.srcIP = hdr.ipv4.srcAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._dstIP1"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 435,
+            "column" : 8,
+            "source_fragment" : "meta.dstIP = hdr.ipv4.dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._protocol2"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 436,
+            "column" : 8,
+            "source_fragment" : "meta.protocol = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffffff00000000"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["ipv4", "srcAddr"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0000000000ffffffff"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 438,
+            "column" : 8,
+            "source_fragment" : "meta.my_flowID[31:0]=hdr.ipv4.srcAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff00000000ffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<<",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["ipv4", "dstAddr"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffffffffffffffffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x20"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00ffffffff00000000"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 439,
+            "column" : 8,
+            "source_fragment" : "meta.my_flowID[63:32]=hdr.ipv4.dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00ffffffffffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<<",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["ipv4", "protocol"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffffffffffffffffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x40"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff0000000000000000"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 440,
+            "column" : 8,
+            "source_fragment" : "meta.my_flowID[71:64]=hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flow_cnt4"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 443,
+            "column" : 8,
+            "source_fragment" : "meta.my_flow_cnt = 32w1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.compute_reg_index",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 449,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000c"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 449,
+            "column" : 33,
+            "source_fragment" : "10w12"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r15"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 448,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_r1, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_1"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 451,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_2"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0022"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 451,
+            "column" : 33,
+            "source_fragment" : "10w34"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r26"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_0"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 450,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_r2, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_3"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 453,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_4"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0038"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 453,
+            "column" : 33,
+            "source_fragment" : "10w56"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r37"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_1"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 452,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_r3, HashAlgorithm.crc16, 10w0, ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.heavy_part_init",
+      "id" : 12,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_5"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_6"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x004e"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 33,
+            "source_fragment" : "10w78"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_2"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0063"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 458,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 461,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 462,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_total_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 464,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.heavy_part_init",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_7"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x004e"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 33,
+            "source_fragment" : "10w78"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_3"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0063"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 458,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 461,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 462,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flag11"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flag"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 463,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flag.read(meta.ha_tuple.flag, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_total_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 464,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.heavy_part_init",
+      "id" : 14,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_9"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 17,
+            "source_fragment" : "meta"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_10"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x004e"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 459,
+            "column" : 33,
+            "source_fragment" : "10w78"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0063"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 458,
+            "column" : 8,
+            "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 461,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 462,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flag11"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flag"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 463,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flag.read(meta.ha_tuple.flag, meta.ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_total_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 464,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.min_cnt",
+      "id" : 15,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyEgress.min_cnt",
+      "id" : 16,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._cms_freq_estimate17"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "?",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "custom_metadata_t._qc_r315"]
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "?",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r113"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r214"]
+                      },
+                      "cond" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "<",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "custom_metadata_t._qc_r113"]
+                          },
+                          "right" : {
+                            "type" : "field",
+                            "value" : ["scalars", "custom_metadata_t._qc_r214"]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cond" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "?",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "custom_metadata_t._qc_r113"]
+                          },
+                          "right" : {
+                            "type" : "field",
+                            "value" : ["scalars", "custom_metadata_t._qc_r214"]
+                          },
+                          "cond" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["scalars", "custom_metadata_t._qc_r113"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "custom_metadata_t._qc_r214"]
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r315"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 467,
+            "column" : 33,
+            "source_fragment" : "mincnt, in bit<32> cnt1, in bit<32> cnt2, ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy488",
+      "id" : 17,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "is_heavy_processed_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 488,
+            "column" : 12,
+            "source_fragment" : "bit<1> is_heavy_processed = 1w0;"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy494",
+      "id" : 18,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_11"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 494,
+            "column" : 59,
+            "source_fragment" : "meta.ha_tuple.p_vote + 1"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_11"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 494,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, meta.ha_tuple.p_vote + 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "is_heavy_processed_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 495,
+            "column" : 16,
+            "source_fragment" : "is_heavy_processed = 1w1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy500",
+      "id" : 19,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 500,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 501,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, 32w1)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flag"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 502,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_flag.write(meta.ha_heavy, 1w0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "is_heavy_processed_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 504,
+            "column" : 16,
+            "source_fragment" : "is_heavy_processed = 1w1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy507",
+      "id" : 20,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_12"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 507,
+            "column" : 59,
+            "source_fragment" : "meta.ha_tuple.total_vote + 1"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_total_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_12"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 507,
+            "column" : 12,
+            "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, meta.ha_tuple.total_vote + 1)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy515",
+      "id" : 21,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "is_heavy_processed_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 515,
+            "column" : 16,
+            "source_fragment" : "is_heavy_processed = 1w0"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 521,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 522,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, 32w1)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flag"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 523,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_flag.write(meta.ha_heavy, 1w1)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_total_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_heavy8"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 524,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, 32w1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 527,
+            "column" : 16,
+            "source_fragment" : "meta.my_flowID = tmp_flowID"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._my_flow_cnt4"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 528,
+            "column" : 16,
+            "source_fragment" : "meta.my_flow_cnt = tmp_p_vote"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy548",
+      "id" : 22,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r113"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r1"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r15"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 548,
+            "column" : 16,
+            "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r214"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r2"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r26"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 549,
+            "column" : 16,
+            "source_fragment" : "cms_r2.read(meta.qc_r2, meta.ha_r2)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r315"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r3"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r37"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 550,
+            "column" : 16,
+            "source_fragment" : "cms_r3.read(meta.qc_r3, meta.ha_r3)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy555",
+      "id" : 23,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_13"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r113"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flow_cnt4"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 555,
+            "column" : 41,
+            "source_fragment" : "meta.qc_r1 + meta.my_flow_cnt"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "cms_r1"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r15"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_13"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 555,
+            "column" : 16,
+            "source_fragment" : "cms_r1.write(meta.ha_r1, meta.qc_r1 + meta.my_flow_cnt)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_14"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r214"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flow_cnt4"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 556,
+            "column" : 41,
+            "source_fragment" : "meta.qc_r2 + meta.my_flow_cnt"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "cms_r2"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r26"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_14"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 556,
+            "column" : 16,
+            "source_fragment" : "cms_r2.write(meta.ha_r2, meta.qc_r2 + meta.my_flow_cnt)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_15"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._qc_r315"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._my_flow_cnt4"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 557,
+            "column" : 41,
+            "source_fragment" : "meta.qc_r3 + meta.my_flow_cnt"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "cms_r3"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r37"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_15"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 557,
+            "column" : 16,
+            "source_fragment" : "cms_r3.write(meta.ha_r3, meta.qc_r3 + meta.my_flow_cnt)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r113"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r1"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r15"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 560,
+            "column" : 16,
+            "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r214"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r2"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r26"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 561,
+            "column" : 16,
+            "source_fragment" : "cms_r2.read(meta.qc_r2, meta.ha_r2)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._qc_r315"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r3"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._ha_r37"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 562,
+            "column" : 16,
+            "source_fragment" : "cms_r3.read(meta.qc_r3, meta.ha_r3)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy345",
+      "id" : 24,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_has_lp"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 345,
+            "column" : 16,
+            "source_fragment" : "has_lp = 1w1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy339",
+      "id" : 25,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_hp_est"]
+            },
+            {
+              "type" : "field",
+              "value" : ["cq_ha_tuple", "p_vote"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 339,
+            "column" : 12,
+            "source_fragment" : "hp_est = ha_tuple.p_vote"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_has_lp"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 340,
+            "column" : 12,
+            "source_fragment" : "has_lp = 1w0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy301",
+      "id" : 26,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_has_lp"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 301,
+            "column" : 8,
+            "source_fragment" : "bit<1> has_lp = 1w1;"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_flowID"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffffff00000000"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["ipv4", "srcAddr"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0000000000ffffffff"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 304,
+            "column" : 8,
+            "source_fragment" : "flowID[31:0] = srcIP; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_flowID"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff00000000ffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<<",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["ipv4", "dstAddr"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffffffffffffffffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x20"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00ffffffff00000000"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 305,
+            "column" : 8,
+            "source_fragment" : "flowID[63:32] = dstIP; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_flowID"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00ffffffffffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "<<",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["query", "flow_proto"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffffffffffffffffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x40"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff0000000000000000"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 306,
+            "column" : 8,
+            "source_fragment" : "flowID[71:64] = ip_protocol; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_hp_est"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 322,
+            "column" : 8,
+            "source_fragment" : "bit<32> hp_est = 32w0;"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_lp_est"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 324,
+            "column" : 8,
+            "source_fragment" : "bit<32> lp_est = 32w0;"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_16"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 328,
+            "column" : 17,
+            "source_fragment" : "flowID"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_17"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x004e"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 328,
+            "column" : 25,
+            "source_fragment" : "10w78"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_heavy"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_5"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0063"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 327,
+            "column" : 8,
+            "source_fragment" : "hash(ha_heavy, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["cq_ha_tuple", "flowID"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flowID"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_heavy"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 330,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flowID.read(ha_tuple.flowID, ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["cq_ha_tuple", "p_vote"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_p_vote"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_heavy"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 331,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_p_vote.read(ha_tuple.p_vote, ha_heavy)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["cq_ha_tuple", "flag"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "heavy_counters_flag"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_heavy"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 332,
+            "column" : 8,
+            "source_fragment" : "heavy_counters_flag.read(ha_tuple.flag, ha_heavy)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy356",
+      "id" : 27,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_18"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 357,
+            "column" : 21,
+            "source_fragment" : "flowID"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_19"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000c"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 357,
+            "column" : 29,
+            "source_fragment" : "10w12"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r1"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_6"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 356,
+            "column" : 12,
+            "source_fragment" : "hash(ha_cms_r1, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_20"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 359,
+            "column" : 21,
+            "source_fragment" : "flowID"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_21"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0022"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 359,
+            "column" : 29,
+            "source_fragment" : "10w34"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r2"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_7"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 358,
+            "column" : 12,
+            "source_fragment" : "hash(ha_cms_r2, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_22"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_flowID"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 361,
+            "column" : 21,
+            "source_fragment" : "flowID"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_23"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0038"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 361,
+            "column" : 29,
+            "source_fragment" : "10w56"
+          }
+        },
+        {
+          "op" : "modify_field_with_hash_based_offset",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r3"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            },
+            {
+              "type" : "calculation",
+              "value" : "calc_8"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 360,
+            "column" : 12,
+            "source_fragment" : "hash(ha_cms_r3, HashAlgorithm.crc16, 10w0, ..."
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_query_r1"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r1"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r1"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 363,
+            "column" : 12,
+            "source_fragment" : "cms_r1.read(query_r1, ha_cms_r1)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_query_r2"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r2"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r2"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 364,
+            "column" : 12,
+            "source_fragment" : "cms_r2.read(query_r2, ha_cms_r2)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_query_r3"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "cms_r3"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "cq_ha_cms_r3"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 365,
+            "column" : 12,
+            "source_fragment" : "cms_r3.read(query_r3, ha_cms_r3)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ES_heavy370",
+      "id" : 28,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "custom_metadata_t._freq_estimate16"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_hp_est"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "cq_lp_est"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 370,
+            "column" : 14,
+            "source_fragment" : "= hp_est + lp_est; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["query", "count"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["scalars", "cq_hp_est"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "cq_lp_est"]
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0000ffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 574,
+            "column" : 12,
+            "source_fragment" : "hdr.query.count = (bit<16>)meta.freq_estimate"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 212,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "node_2",
+      "tables" : [
+        {
+          "name" : "tbl_drop",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 258,
+            "column" : 12,
+            "source_fragment" : "drop()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [2],
+          "actions" : ["MyIngress.drop"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.drop" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyIngress.ip_debug",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 219,
+            "column" : 10,
+            "source_fragment" : "ip_debug"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv4.srcAddr",
+              "target" : ["ipv4", "srcAddr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv4.dstAddr",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv4.protocol",
+              "target" : ["ipv4", "protocol"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.query.count",
+              "target" : ["query", "count"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.query.flow_proto",
+              "target" : ["query", "flow_proto"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [0],
+          "actions" : ["NoAction"],
+          "base_default_next" : "MyIngress.ipv4_static",
+          "next_tables" : {
+            "NoAction" : "MyIngress.ipv4_static"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.ipv4_static",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 241,
+            "column" : 10,
+            "source_fragment" : "ipv4_static"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv4.protocol",
+              "target" : ["ipv4", "protocol"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [3, 4, 1],
+          "actions" : ["MyIngress.query_forward", "MyIngress.caida_forward", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.query_forward" : null,
+            "MyIngress.caida_forward" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_2",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 256,
+            "column" : 12,
+            "source_fragment" : "hdr.ipv4.protocol != UDP_PROTOCOL && hdr.ipv4.protocol != TCP_PROTOCOL ..."
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "and",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "!=",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "protocol"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x11"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "!=",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "protocol"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x06"
+                      }
+                    }
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "!=",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["ipv4", "protocol"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x3f"
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_drop",
+          "false_next" : "MyIngress.ip_debug"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 378,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : "node_8",
+      "tables" : [
+        {
+          "name" : "tbl_compute_flow_id",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 485,
+            "column" : 12,
+            "source_fragment" : "compute_flow_id()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10],
+          "actions" : ["MyEgress.compute_flow_id"],
+          "base_default_next" : "tbl_ES_heavy488",
+          "next_tables" : {
+            "MyEgress.compute_flow_id" : "tbl_ES_heavy488"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy488",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 488,
+            "column" : 12,
+            "source_fragment" : "bit<1> is_heavy_processed = 1w0;"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [17],
+          "actions" : ["ES_heavy488"],
+          "base_default_next" : "tbl_heavy_part_init",
+          "next_tables" : {
+            "ES_heavy488" : "tbl_heavy_part_init"
+          },
+          "default_entry" : {
+            "action_id" : 17,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_heavy_part_init",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 491,
+            "column" : 12,
+            "source_fragment" : "heavy_part_init()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [12],
+          "actions" : ["MyEgress.heavy_part_init"],
+          "base_default_next" : "node_12",
+          "next_tables" : {
+            "MyEgress.heavy_part_init" : "node_12"
+          },
+          "default_entry" : {
+            "action_id" : 12,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy494",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 494,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, meta.ha_tuple.p_vote + 1); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [18],
+          "actions" : ["ES_heavy494"],
+          "base_default_next" : "node_14",
+          "next_tables" : {
+            "ES_heavy494" : "node_14"
+          },
+          "default_entry" : {
+            "action_id" : 18,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy500",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 500,
+            "column" : 16,
+            "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [19],
+          "actions" : ["ES_heavy500"],
+          "base_default_next" : "tbl_ES_heavy507",
+          "next_tables" : {
+            "ES_heavy500" : "tbl_ES_heavy507"
+          },
+          "default_entry" : {
+            "action_id" : 19,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy507",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 507,
+            "column" : 12,
+            "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, meta.ha_tuple.total_vote + 1)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [20],
+          "actions" : ["ES_heavy507"],
+          "base_default_next" : "tbl_heavy_part_init_0",
+          "next_tables" : {
+            "ES_heavy507" : "tbl_heavy_part_init_0"
+          },
+          "default_entry" : {
+            "action_id" : 20,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_heavy_part_init_0",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 511,
+            "column" : 12,
+            "source_fragment" : "heavy_part_init()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [13],
+          "actions" : ["MyEgress.heavy_part_init"],
+          "base_default_next" : "node_18",
+          "next_tables" : {
+            "MyEgress.heavy_part_init" : "node_18"
+          },
+          "default_entry" : {
+            "action_id" : 13,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy515",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 515,
+            "column" : 35,
+            "source_fragment" : "= 1w0; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [21],
+          "actions" : ["ES_heavy515"],
+          "base_default_next" : "tbl_heavy_part_init_1",
+          "next_tables" : {
+            "ES_heavy515" : "tbl_heavy_part_init_1"
+          },
+          "default_entry" : {
+            "action_id" : 21,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_heavy_part_init_1",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 531,
+            "column" : 16,
+            "source_fragment" : "heavy_part_init()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [14],
+          "actions" : ["MyEgress.heavy_part_init"],
+          "base_default_next" : "MyEgress.heavy_part_debug",
+          "next_tables" : {
+            "MyEgress.heavy_part_init" : "MyEgress.heavy_part_debug"
+          },
+          "default_entry" : {
+            "action_id" : 14,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyEgress.heavy_part_debug",
+          "id" : 12,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 404,
+            "column" : 10,
+            "source_fragment" : "heavy_part_debug"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_heavy",
+              "target" : ["scalars", "custom_metadata_t._ha_heavy8"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_tuple.flowID",
+              "target" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_tuple.p_vote",
+              "target" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_tuple.flag",
+              "target" : ["scalars", "custom_metadata_t._ha_tuple_flag11"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_tuple.total_vote",
+              "target" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7],
+          "actions" : ["NoAction"],
+          "base_default_next" : "node_22",
+          "next_tables" : {
+            "NoAction" : "node_22"
+          },
+          "default_entry" : {
+            "action_id" : 7,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_compute_reg_index",
+          "id" : 13,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 546,
+            "column" : 16,
+            "source_fragment" : "compute_reg_index()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [11],
+          "actions" : ["MyEgress.compute_reg_index"],
+          "base_default_next" : "tbl_ES_heavy548",
+          "next_tables" : {
+            "MyEgress.compute_reg_index" : "tbl_ES_heavy548"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy548",
+          "id" : 14,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 548,
+            "column" : 16,
+            "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [22],
+          "actions" : ["ES_heavy548"],
+          "base_default_next" : "tbl_min_cnt",
+          "next_tables" : {
+            "ES_heavy548" : "tbl_min_cnt"
+          },
+          "default_entry" : {
+            "action_id" : 22,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_min_cnt",
+          "id" : 15,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 552,
+            "column" : 16,
+            "source_fragment" : "min_cnt(meta.cms_freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [15],
+          "actions" : ["MyEgress.min_cnt"],
+          "base_default_next" : "tbl_ES_heavy555",
+          "next_tables" : {
+            "MyEgress.min_cnt" : "tbl_ES_heavy555"
+          },
+          "default_entry" : {
+            "action_id" : 15,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy555",
+          "id" : 16,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 555,
+            "column" : 16,
+            "source_fragment" : "cms_r1.write(meta.ha_r1, meta.qc_r1 + meta.my_flow_cnt); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [23],
+          "actions" : ["ES_heavy555"],
+          "base_default_next" : "tbl_min_cnt_0",
+          "next_tables" : {
+            "ES_heavy555" : "tbl_min_cnt_0"
+          },
+          "default_entry" : {
+            "action_id" : 23,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_min_cnt_0",
+          "id" : 17,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 564,
+            "column" : 16,
+            "source_fragment" : "min_cnt(meta.cms_freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [16],
+          "actions" : ["MyEgress.min_cnt"],
+          "base_default_next" : "MyEgress.cms_debug",
+          "next_tables" : {
+            "MyEgress.min_cnt" : "MyEgress.cms_debug"
+          },
+          "default_entry" : {
+            "action_id" : 16,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyEgress.cms_debug",
+          "id" : 18,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 384,
+            "column" : 10,
+            "source_fragment" : "cms_debug"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_r1",
+              "target" : ["scalars", "custom_metadata_t._ha_r15"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_r2",
+              "target" : ["scalars", "custom_metadata_t._ha_r26"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.ha_r3",
+              "target" : ["scalars", "custom_metadata_t._ha_r37"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.qc_r1",
+              "target" : ["scalars", "custom_metadata_t._qc_r113"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.qc_r2",
+              "target" : ["scalars", "custom_metadata_t._qc_r214"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.qc_r3",
+              "target" : ["scalars", "custom_metadata_t._qc_r315"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.cms_freq_estimate",
+              "target" : ["scalars", "custom_metadata_t._cms_freq_estimate17"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.my_flowID",
+              "target" : ["scalars", "custom_metadata_t._my_flowID3"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6],
+          "actions" : ["NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 6,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyEgress.cq.count_debug",
+          "id" : 19,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 271,
+            "column" : 10,
+            "source_fragment" : "count_debug"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "srcIP",
+              "target" : ["ipv4", "srcAddr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "dstIP",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "ip_protocol",
+              "target" : ["query", "flow_proto"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["NoAction"],
+          "base_default_next" : "tbl_ES_heavy301",
+          "next_tables" : {
+            "NoAction" : "tbl_ES_heavy301"
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy301",
+          "id" : 20,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 301,
+            "column" : 8,
+            "source_fragment" : "bit<1> has_lp = 1w1; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [26],
+          "actions" : ["ES_heavy301"],
+          "base_default_next" : "node_31",
+          "next_tables" : {
+            "ES_heavy301" : "node_31"
+          },
+          "default_entry" : {
+            "action_id" : 26,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy339",
+          "id" : 21,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 339,
+            "column" : 19,
+            "source_fragment" : "= ha_tuple.p_vote; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [25],
+          "actions" : ["ES_heavy339"],
+          "base_default_next" : "node_33",
+          "next_tables" : {
+            "ES_heavy339" : "node_33"
+          },
+          "default_entry" : {
+            "action_id" : 25,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy345",
+          "id" : 22,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 345,
+            "column" : 23,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [24],
+          "actions" : ["ES_heavy345"],
+          "base_default_next" : "node_35",
+          "next_tables" : {
+            "ES_heavy345" : "node_35"
+          },
+          "default_entry" : {
+            "action_id" : 24,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy356",
+          "id" : 23,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 356,
+            "column" : 12,
+            "source_fragment" : "hash(ha_cms_r1, HashAlgorithm.crc16, 10w0, ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [27],
+          "actions" : ["ES_heavy356"],
+          "base_default_next" : "tbl_cq_min_cnt",
+          "next_tables" : {
+            "ES_heavy356" : "tbl_cq_min_cnt"
+          },
+          "default_entry" : {
+            "action_id" : 27,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_cq_min_cnt",
+          "id" : 24,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 367,
+            "column" : 12,
+            "source_fragment" : "min_cnt(lp_est, query_r1, query_r2, query_r3)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [9],
+          "actions" : ["MyEgress.cq.min_cnt"],
+          "base_default_next" : "tbl_ES_heavy370",
+          "next_tables" : {
+            "MyEgress.cq.min_cnt" : "tbl_ES_heavy370"
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ES_heavy370",
+          "id" : 25,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 370,
+            "column" : 14,
+            "source_fragment" : "= hp_est + lp_est; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [28],
+          "actions" : ["ES_heavy370"],
+          "base_default_next" : "MyEgress.count_query_debug",
+          "next_tables" : {
+            "ES_heavy370" : "MyEgress.count_query_debug"
+          },
+          "default_entry" : {
+            "action_id" : 28,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyEgress.count_query_debug",
+          "id" : 26,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 420,
+            "column" : 10,
+            "source_fragment" : "count_query_debug"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.query.count",
+              "target" : ["query", "count"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.query.flow_proto",
+              "target" : ["query", "flow_proto"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [8],
+          "actions" : ["NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_8",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 482,
+            "column" : 12,
+            "source_fragment" : "hdr.ipv4.protocol != QUERY_PROTOCOL"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["ipv4", "protocol"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x3f"
+              }
+            }
+          },
+          "true_next" : "tbl_compute_flow_id",
+          "false_next" : "MyEgress.cq.count_debug"
+        },
+        {
+          "name" : "node_12",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 493,
+            "column" : 16,
+            "source_fragment" : "meta.ha_tuple.flowID == meta.my_flowID"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "custom_metadata_t._my_flowID3"]
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy494",
+          "false_next" : "node_14"
+        },
+        {
+          "name" : "node_14",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 498,
+            "column" : 16,
+            "source_fragment" : "meta.ha_tuple.flowID == IDLE_HEAVY_COUNTER_FLOWID"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "custom_metadata_t._ha_tuple_flowID9"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000000000"
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy500",
+          "false_next" : "tbl_ES_heavy507"
+        },
+        {
+          "name" : "node_18",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 513,
+            "column" : 16,
+            "source_fragment" : "meta.ha_tuple.p_vote * EVICT_THRESHOLD <= meta.ha_tuple.total_vote"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "<=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "*",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "custom_metadata_t._ha_tuple_p_vote10"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000005"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "custom_metadata_t._ha_tuple_total_vote12"]
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy515",
+          "false_next" : "MyEgress.heavy_part_debug"
+        },
+        {
+          "name" : "node_22",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 542,
+            "column" : 16,
+            "source_fragment" : "is_heavy_processed == 1w0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "is_heavy_processed_0"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_compute_reg_index"
+        },
+        {
+          "name" : "node_31",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 335,
+            "column" : 11,
+            "source_fragment" : "ha_tuple.flowID == flowID"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["cq_ha_tuple", "flowID"]
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "cq_flowID"]
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy339",
+          "false_next" : "node_35"
+        },
+        {
+          "name" : "node_33",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 342,
+            "column" : 15,
+            "source_fragment" : "ha_tuple.flag == 1w1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["cq_ha_tuple", "flag"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy345",
+          "false_next" : "node_35"
+        },
+        {
+          "name" : "node_35",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "ES_heavy.p4",
+            "line" : 353,
+            "column" : 11,
+            "source_fragment" : "has_lp == 1w1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "cq_has_lp"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ES_heavy356",
+          "false_next" : "tbl_ES_heavy370"
+        }
+      ]
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "ES_heavy.p4",
+        "line" : 587,
+        "column" : 1,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "target" : ["ipv4", "hdrChecksum"],
+      "type" : "generic",
+      "calculation" : "calc_9",
+      "verify" : false,
+      "update" : true,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      }
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.priority",
+      ["standard_metadata", "priority"]
+    ]
+  ],
+  "program" : "ES_heavy.p4",
+  "__meta__" : {
+    "version" : [2, 23],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}
