@@ -377,7 +377,7 @@
       "name" : "deparser",
       "id" : 0,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 609,
         "column" : 8,
         "source_fragment" : "MyDeparser"
@@ -393,7 +393,7 @@
       "name" : "heavy_counters_flowID",
       "id" : 0,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 38,
         "column" : 44,
         "source_fragment" : "heavy_counters_flowID"
@@ -405,7 +405,7 @@
       "name" : "heavy_counters_p_vote",
       "id" : 1,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 39,
         "column" : 44,
         "source_fragment" : "heavy_counters_p_vote"
@@ -417,7 +417,7 @@
       "name" : "heavy_counters_flag",
       "id" : 2,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 40,
         "column" : 43,
         "source_fragment" : "heavy_counters_flag"
@@ -429,7 +429,7 @@
       "name" : "heavy_counters_total_vote",
       "id" : 3,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 41,
         "column" : 44,
         "source_fragment" : "heavy_counters_total_vote"
@@ -441,7 +441,7 @@
       "name" : "cms_r1",
       "id" : 4,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 44,
         "column" : 41,
         "source_fragment" : "cms_r1"
@@ -453,7 +453,7 @@
       "name" : "cms_r2",
       "id" : 5,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 45,
         "column" : 41,
         "source_fragment" : "cms_r2"
@@ -465,7 +465,7 @@
       "name" : "cms_r3",
       "id" : 6,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 46,
         "column" : 41,
         "source_fragment" : "cms_r3"
@@ -629,7 +629,7 @@
       "name" : "calc_9",
       "id" : 10,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 587,
         "column" : 1,
         "source_fragment" : "update_checksum( ..."
@@ -711,7 +711,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 216,
             "column" : 8,
             "source_fragment" : "mark_to_drop(standard_metadata)"
@@ -742,7 +742,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 234,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
@@ -773,7 +773,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 238,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
@@ -898,7 +898,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 283,
             "column" : 33,
             "source_fragment" : "mincnt, in bit<32> cnt1, in bit<32> cnt2, ..."
@@ -924,7 +924,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 434,
             "column" : 8,
             "source_fragment" : "meta.srcIP = hdr.ipv4.srcAddr"
@@ -943,7 +943,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 435,
             "column" : 8,
             "source_fragment" : "meta.dstIP = hdr.ipv4.dstAddr"
@@ -962,7 +962,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 436,
             "column" : 8,
             "source_fragment" : "meta.protocol = hdr.ipv4.protocol"
@@ -1024,7 +1024,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 438,
             "column" : 8,
             "source_fragment" : "meta.my_flowID[31:0]=hdr.ipv4.srcAddr"
@@ -1106,7 +1106,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 439,
             "column" : 8,
             "source_fragment" : "meta.my_flowID[63:32]=hdr.ipv4.dstAddr"
@@ -1188,7 +1188,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 440,
             "column" : 8,
             "source_fragment" : "meta.my_flowID[71:64]=hdr.ipv4.protocol"
@@ -1207,7 +1207,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 443,
             "column" : 8,
             "source_fragment" : "meta.my_flow_cnt = 32w1"
@@ -1233,7 +1233,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 449,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1252,7 +1252,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 449,
             "column" : 33,
             "source_fragment" : "10w12"
@@ -1279,7 +1279,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 448,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_r1, HashAlgorithm.crc16, 10w0, ..."
@@ -1298,7 +1298,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 451,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1317,7 +1317,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 451,
             "column" : 33,
             "source_fragment" : "10w34"
@@ -1344,7 +1344,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 450,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_r2, HashAlgorithm.crc16, 10w0, ..."
@@ -1363,7 +1363,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 453,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1382,7 +1382,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 453,
             "column" : 33,
             "source_fragment" : "10w56"
@@ -1409,7 +1409,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 452,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_r3, HashAlgorithm.crc16, 10w0, ..."
@@ -1435,7 +1435,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1454,7 +1454,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 33,
             "source_fragment" : "10w78"
@@ -1481,7 +1481,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 458,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
@@ -1504,7 +1504,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 461,
             "column" : 8,
             "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
@@ -1527,7 +1527,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 462,
             "column" : 8,
             "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
@@ -1550,7 +1550,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 464,
             "column" : 8,
             "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
@@ -1576,7 +1576,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1595,7 +1595,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 33,
             "source_fragment" : "10w78"
@@ -1622,7 +1622,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 458,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
@@ -1645,7 +1645,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 461,
             "column" : 8,
             "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
@@ -1668,7 +1668,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 462,
             "column" : 8,
             "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
@@ -1691,7 +1691,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 463,
             "column" : 8,
             "source_fragment" : "heavy_counters_flag.read(meta.ha_tuple.flag, meta.ha_heavy)"
@@ -1714,7 +1714,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 464,
             "column" : 8,
             "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
@@ -1740,7 +1740,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 17,
             "source_fragment" : "meta"
@@ -1759,7 +1759,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 459,
             "column" : 33,
             "source_fragment" : "10w78"
@@ -1786,7 +1786,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 458,
             "column" : 8,
             "source_fragment" : "hash(meta.ha_heavy, HashAlgorithm.crc16, 10w0, ..."
@@ -1809,7 +1809,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 461,
             "column" : 8,
             "source_fragment" : "heavy_counters_flowID.read(meta.ha_tuple.flowID, meta.ha_heavy)"
@@ -1832,7 +1832,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 462,
             "column" : 8,
             "source_fragment" : "heavy_counters_p_vote.read(meta.ha_tuple.p_vote, meta.ha_heavy)"
@@ -1855,7 +1855,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 463,
             "column" : 8,
             "source_fragment" : "heavy_counters_flag.read(meta.ha_tuple.flag, meta.ha_heavy)"
@@ -1878,7 +1878,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 464,
             "column" : 8,
             "source_fragment" : "heavy_counters_total_vote.read(meta.ha_tuple.total_vote, meta.ha_heavy)"
@@ -1985,7 +1985,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 467,
             "column" : 33,
             "source_fragment" : "mincnt, in bit<32> cnt1, in bit<32> cnt2, ..."
@@ -1994,7 +1994,7 @@
       ]
     },
     {
-      "name" : "ES_heavy488",
+      "name" : "simple_sketch488",
       "id" : 17,
       "runtime_data" : [],
       "primitives" : [
@@ -2011,7 +2011,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 488,
             "column" : 12,
             "source_fragment" : "bit<1> is_heavy_processed = 1w0;"
@@ -2020,7 +2020,7 @@
       ]
     },
     {
-      "name" : "ES_heavy494",
+      "name" : "simple_sketch494",
       "id" : 18,
       "runtime_data" : [],
       "primitives" : [
@@ -2060,7 +2060,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 494,
             "column" : 59,
             "source_fragment" : "meta.ha_tuple.p_vote + 1"
@@ -2083,7 +2083,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 494,
             "column" : 16,
             "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, meta.ha_tuple.p_vote + 1)"
@@ -2102,7 +2102,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 495,
             "column" : 16,
             "source_fragment" : "is_heavy_processed = 1w1"
@@ -2111,7 +2111,7 @@
       ]
     },
     {
-      "name" : "ES_heavy500",
+      "name" : "simple_sketch500",
       "id" : 19,
       "runtime_data" : [],
       "primitives" : [
@@ -2132,7 +2132,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 500,
             "column" : 16,
             "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID)"
@@ -2155,7 +2155,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 501,
             "column" : 16,
             "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, 32w1)"
@@ -2178,7 +2178,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 502,
             "column" : 16,
             "source_fragment" : "heavy_counters_flag.write(meta.ha_heavy, 1w0)"
@@ -2197,7 +2197,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 504,
             "column" : 16,
             "source_fragment" : "is_heavy_processed = 1w1"
@@ -2206,7 +2206,7 @@
       ]
     },
     {
-      "name" : "ES_heavy507",
+      "name" : "simple_sketch507",
       "id" : 20,
       "runtime_data" : [],
       "primitives" : [
@@ -2246,7 +2246,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 507,
             "column" : 59,
             "source_fragment" : "meta.ha_tuple.total_vote + 1"
@@ -2269,7 +2269,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 507,
             "column" : 12,
             "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, meta.ha_tuple.total_vote + 1)"
@@ -2278,7 +2278,7 @@
       ]
     },
     {
-      "name" : "ES_heavy515",
+      "name" : "simple_sketch515",
       "id" : 21,
       "runtime_data" : [],
       "primitives" : [
@@ -2295,7 +2295,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 515,
             "column" : 16,
             "source_fragment" : "is_heavy_processed = 1w0"
@@ -2318,7 +2318,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 521,
             "column" : 16,
             "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID)"
@@ -2341,7 +2341,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 522,
             "column" : 16,
             "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, 32w1)"
@@ -2364,7 +2364,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 523,
             "column" : 16,
             "source_fragment" : "heavy_counters_flag.write(meta.ha_heavy, 1w1)"
@@ -2387,7 +2387,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 524,
             "column" : 16,
             "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, 32w1)"
@@ -2406,7 +2406,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 527,
             "column" : 16,
             "source_fragment" : "meta.my_flowID = tmp_flowID"
@@ -2425,7 +2425,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 528,
             "column" : 16,
             "source_fragment" : "meta.my_flow_cnt = tmp_p_vote"
@@ -2434,7 +2434,7 @@
       ]
     },
     {
-      "name" : "ES_heavy548",
+      "name" : "simple_sketch548",
       "id" : 22,
       "runtime_data" : [],
       "primitives" : [
@@ -2455,7 +2455,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 548,
             "column" : 16,
             "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1)"
@@ -2478,7 +2478,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 549,
             "column" : 16,
             "source_fragment" : "cms_r2.read(meta.qc_r2, meta.ha_r2)"
@@ -2501,7 +2501,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 550,
             "column" : 16,
             "source_fragment" : "cms_r3.read(meta.qc_r3, meta.ha_r3)"
@@ -2510,7 +2510,7 @@
       ]
     },
     {
-      "name" : "ES_heavy555",
+      "name" : "simple_sketch555",
       "id" : 23,
       "runtime_data" : [],
       "primitives" : [
@@ -2550,7 +2550,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 555,
             "column" : 41,
             "source_fragment" : "meta.qc_r1 + meta.my_flow_cnt"
@@ -2573,7 +2573,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 555,
             "column" : 16,
             "source_fragment" : "cms_r1.write(meta.ha_r1, meta.qc_r1 + meta.my_flow_cnt)"
@@ -2615,7 +2615,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 556,
             "column" : 41,
             "source_fragment" : "meta.qc_r2 + meta.my_flow_cnt"
@@ -2638,7 +2638,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 556,
             "column" : 16,
             "source_fragment" : "cms_r2.write(meta.ha_r2, meta.qc_r2 + meta.my_flow_cnt)"
@@ -2680,7 +2680,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 557,
             "column" : 41,
             "source_fragment" : "meta.qc_r3 + meta.my_flow_cnt"
@@ -2703,7 +2703,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 557,
             "column" : 16,
             "source_fragment" : "cms_r3.write(meta.ha_r3, meta.qc_r3 + meta.my_flow_cnt)"
@@ -2726,7 +2726,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 560,
             "column" : 16,
             "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1)"
@@ -2749,7 +2749,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 561,
             "column" : 16,
             "source_fragment" : "cms_r2.read(meta.qc_r2, meta.ha_r2)"
@@ -2772,7 +2772,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 562,
             "column" : 16,
             "source_fragment" : "cms_r3.read(meta.qc_r3, meta.ha_r3)"
@@ -2781,7 +2781,7 @@
       ]
     },
     {
-      "name" : "ES_heavy345",
+      "name" : "simple_sketch345",
       "id" : 24,
       "runtime_data" : [],
       "primitives" : [
@@ -2798,7 +2798,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 345,
             "column" : 16,
             "source_fragment" : "has_lp = 1w1"
@@ -2807,7 +2807,7 @@
       ]
     },
     {
-      "name" : "ES_heavy339",
+      "name" : "simple_sketch339",
       "id" : 25,
       "runtime_data" : [],
       "primitives" : [
@@ -2824,7 +2824,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 339,
             "column" : 12,
             "source_fragment" : "hp_est = ha_tuple.p_vote"
@@ -2843,7 +2843,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 340,
             "column" : 12,
             "source_fragment" : "has_lp = 1w0"
@@ -2852,7 +2852,7 @@
       ]
     },
     {
-      "name" : "ES_heavy301",
+      "name" : "simple_sketch301",
       "id" : 26,
       "runtime_data" : [],
       "primitives" : [
@@ -2869,7 +2869,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 301,
             "column" : 8,
             "source_fragment" : "bit<1> has_lp = 1w1;"
@@ -2931,7 +2931,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 304,
             "column" : 8,
             "source_fragment" : "flowID[31:0] = srcIP; ..."
@@ -3013,7 +3013,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 305,
             "column" : 8,
             "source_fragment" : "flowID[63:32] = dstIP; ..."
@@ -3095,7 +3095,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 306,
             "column" : 8,
             "source_fragment" : "flowID[71:64] = ip_protocol; ..."
@@ -3114,7 +3114,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 322,
             "column" : 8,
             "source_fragment" : "bit<32> hp_est = 32w0;"
@@ -3133,7 +3133,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 324,
             "column" : 8,
             "source_fragment" : "bit<32> lp_est = 32w0;"
@@ -3152,7 +3152,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 328,
             "column" : 17,
             "source_fragment" : "flowID"
@@ -3171,7 +3171,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 328,
             "column" : 25,
             "source_fragment" : "10w78"
@@ -3198,7 +3198,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 327,
             "column" : 8,
             "source_fragment" : "hash(ha_heavy, HashAlgorithm.crc16, 10w0, ..."
@@ -3221,7 +3221,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 330,
             "column" : 8,
             "source_fragment" : "heavy_counters_flowID.read(ha_tuple.flowID, ha_heavy)"
@@ -3244,7 +3244,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 331,
             "column" : 8,
             "source_fragment" : "heavy_counters_p_vote.read(ha_tuple.p_vote, ha_heavy)"
@@ -3267,7 +3267,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 332,
             "column" : 8,
             "source_fragment" : "heavy_counters_flag.read(ha_tuple.flag, ha_heavy)"
@@ -3276,7 +3276,7 @@
       ]
     },
     {
-      "name" : "ES_heavy356",
+      "name" : "simple_sketch356",
       "id" : 27,
       "runtime_data" : [],
       "primitives" : [
@@ -3293,7 +3293,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 357,
             "column" : 21,
             "source_fragment" : "flowID"
@@ -3312,7 +3312,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 357,
             "column" : 29,
             "source_fragment" : "10w12"
@@ -3339,7 +3339,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 356,
             "column" : 12,
             "source_fragment" : "hash(ha_cms_r1, HashAlgorithm.crc16, 10w0, ..."
@@ -3358,7 +3358,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 359,
             "column" : 21,
             "source_fragment" : "flowID"
@@ -3377,7 +3377,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 359,
             "column" : 29,
             "source_fragment" : "10w34"
@@ -3404,7 +3404,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 358,
             "column" : 12,
             "source_fragment" : "hash(ha_cms_r2, HashAlgorithm.crc16, 10w0, ..."
@@ -3423,7 +3423,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 361,
             "column" : 21,
             "source_fragment" : "flowID"
@@ -3442,7 +3442,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 361,
             "column" : 29,
             "source_fragment" : "10w56"
@@ -3469,7 +3469,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 360,
             "column" : 12,
             "source_fragment" : "hash(ha_cms_r3, HashAlgorithm.crc16, 10w0, ..."
@@ -3492,7 +3492,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 363,
             "column" : 12,
             "source_fragment" : "cms_r1.read(query_r1, ha_cms_r1)"
@@ -3515,7 +3515,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 364,
             "column" : 12,
             "source_fragment" : "cms_r2.read(query_r2, ha_cms_r2)"
@@ -3538,7 +3538,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 365,
             "column" : 12,
             "source_fragment" : "cms_r3.read(query_r3, ha_cms_r3)"
@@ -3547,7 +3547,7 @@
       ]
     },
     {
-      "name" : "ES_heavy370",
+      "name" : "simple_sketch370",
       "id" : 28,
       "runtime_data" : [],
       "primitives" : [
@@ -3587,7 +3587,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 370,
             "column" : 14,
             "source_fragment" : "= hp_est + lp_est; ..."
@@ -3649,7 +3649,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 574,
             "column" : 12,
             "source_fragment" : "hdr.query.count = (bit<16>)meta.freq_estimate"
@@ -3663,7 +3663,7 @@
       "name" : "ingress",
       "id" : 0,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 212,
         "column" : 8,
         "source_fragment" : "MyIngress"
@@ -3674,7 +3674,7 @@
           "name" : "tbl_drop",
           "id" : 0,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 258,
             "column" : 12,
             "source_fragment" : "drop()"
@@ -3703,7 +3703,7 @@
           "name" : "MyIngress.ip_debug",
           "id" : 1,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 219,
             "column" : 10,
             "source_fragment" : "ip_debug"
@@ -3763,7 +3763,7 @@
           "name" : "MyIngress.ipv4_static",
           "id" : 2,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 241,
             "column" : 10,
             "source_fragment" : "ipv4_static"
@@ -3804,7 +3804,7 @@
           "name" : "node_2",
           "id" : 0,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 256,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.protocol != UDP_PROTOCOL && hdr.ipv4.protocol != TCP_PROTOCOL ..."
@@ -3872,7 +3872,7 @@
       "name" : "egress",
       "id" : 1,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 378,
         "column" : 8,
         "source_fragment" : "MyEgress"
@@ -3883,7 +3883,7 @@
           "name" : "tbl_compute_flow_id",
           "id" : 3,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 485,
             "column" : 12,
             "source_fragment" : "compute_flow_id()"
@@ -3897,9 +3897,9 @@
           "direct_meters" : null,
           "action_ids" : [10],
           "actions" : ["MyEgress.compute_flow_id"],
-          "base_default_next" : "tbl_ES_heavy488",
+          "base_default_next" : "tbl_simple_sketch488",
           "next_tables" : {
-            "MyEgress.compute_flow_id" : "tbl_ES_heavy488"
+            "MyEgress.compute_flow_id" : "tbl_simple_sketch488"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -3909,10 +3909,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy488",
+          "name" : "tbl_simple_sketch488",
           "id" : 4,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 488,
             "column" : 12,
             "source_fragment" : "bit<1> is_heavy_processed = 1w0;"
@@ -3925,10 +3925,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [17],
-          "actions" : ["ES_heavy488"],
+          "actions" : ["simple_sketch488"],
           "base_default_next" : "tbl_heavy_part_init",
           "next_tables" : {
-            "ES_heavy488" : "tbl_heavy_part_init"
+            "simple_sketch488" : "tbl_heavy_part_init"
           },
           "default_entry" : {
             "action_id" : 17,
@@ -3941,7 +3941,7 @@
           "name" : "tbl_heavy_part_init",
           "id" : 5,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 491,
             "column" : 12,
             "source_fragment" : "heavy_part_init()"
@@ -3967,10 +3967,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy494",
+          "name" : "tbl_simple_sketch494",
           "id" : 6,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 494,
             "column" : 16,
             "source_fragment" : "heavy_counters_p_vote.write(meta.ha_heavy, meta.ha_tuple.p_vote + 1); ..."
@@ -3983,10 +3983,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [18],
-          "actions" : ["ES_heavy494"],
+          "actions" : ["simple_sketch494"],
           "base_default_next" : "node_14",
           "next_tables" : {
-            "ES_heavy494" : "node_14"
+            "simple_sketch494" : "node_14"
           },
           "default_entry" : {
             "action_id" : 18,
@@ -3996,10 +3996,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy500",
+          "name" : "tbl_simple_sketch500",
           "id" : 7,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 500,
             "column" : 16,
             "source_fragment" : "heavy_counters_flowID.write(meta.ha_heavy, meta.my_flowID); ..."
@@ -4012,10 +4012,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [19],
-          "actions" : ["ES_heavy500"],
-          "base_default_next" : "tbl_ES_heavy507",
+          "actions" : ["simple_sketch500"],
+          "base_default_next" : "tbl_simple_sketch507",
           "next_tables" : {
-            "ES_heavy500" : "tbl_ES_heavy507"
+            "simple_sketch500" : "tbl_simple_sketch507"
           },
           "default_entry" : {
             "action_id" : 19,
@@ -4025,10 +4025,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy507",
+          "name" : "tbl_simple_sketch507",
           "id" : 8,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 507,
             "column" : 12,
             "source_fragment" : "heavy_counters_total_vote.write(meta.ha_heavy, meta.ha_tuple.total_vote + 1)"
@@ -4041,10 +4041,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [20],
-          "actions" : ["ES_heavy507"],
+          "actions" : ["simple_sketch507"],
           "base_default_next" : "tbl_heavy_part_init_0",
           "next_tables" : {
-            "ES_heavy507" : "tbl_heavy_part_init_0"
+            "simple_sketch507" : "tbl_heavy_part_init_0"
           },
           "default_entry" : {
             "action_id" : 20,
@@ -4057,7 +4057,7 @@
           "name" : "tbl_heavy_part_init_0",
           "id" : 9,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 511,
             "column" : 12,
             "source_fragment" : "heavy_part_init()"
@@ -4083,10 +4083,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy515",
+          "name" : "tbl_simple_sketch515",
           "id" : 10,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 515,
             "column" : 35,
             "source_fragment" : "= 1w0; ..."
@@ -4099,10 +4099,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [21],
-          "actions" : ["ES_heavy515"],
+          "actions" : ["simple_sketch515"],
           "base_default_next" : "tbl_heavy_part_init_1",
           "next_tables" : {
-            "ES_heavy515" : "tbl_heavy_part_init_1"
+            "simple_sketch515" : "tbl_heavy_part_init_1"
           },
           "default_entry" : {
             "action_id" : 21,
@@ -4115,7 +4115,7 @@
           "name" : "tbl_heavy_part_init_1",
           "id" : 11,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 531,
             "column" : 16,
             "source_fragment" : "heavy_part_init()"
@@ -4144,7 +4144,7 @@
           "name" : "MyEgress.heavy_part_debug",
           "id" : 12,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 404,
             "column" : 10,
             "source_fragment" : "heavy_part_debug"
@@ -4204,7 +4204,7 @@
           "name" : "tbl_compute_reg_index",
           "id" : 13,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 546,
             "column" : 16,
             "source_fragment" : "compute_reg_index()"
@@ -4218,9 +4218,9 @@
           "direct_meters" : null,
           "action_ids" : [11],
           "actions" : ["MyEgress.compute_reg_index"],
-          "base_default_next" : "tbl_ES_heavy548",
+          "base_default_next" : "tbl_simple_sketch548",
           "next_tables" : {
-            "MyEgress.compute_reg_index" : "tbl_ES_heavy548"
+            "MyEgress.compute_reg_index" : "tbl_simple_sketch548"
           },
           "default_entry" : {
             "action_id" : 11,
@@ -4230,10 +4230,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy548",
+          "name" : "tbl_simple_sketch548",
           "id" : 14,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 548,
             "column" : 16,
             "source_fragment" : "cms_r1.read(meta.qc_r1, meta.ha_r1); ..."
@@ -4246,10 +4246,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [22],
-          "actions" : ["ES_heavy548"],
+          "actions" : ["simple_sketch548"],
           "base_default_next" : "tbl_min_cnt",
           "next_tables" : {
-            "ES_heavy548" : "tbl_min_cnt"
+            "simple_sketch548" : "tbl_min_cnt"
           },
           "default_entry" : {
             "action_id" : 22,
@@ -4262,7 +4262,7 @@
           "name" : "tbl_min_cnt",
           "id" : 15,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 552,
             "column" : 16,
             "source_fragment" : "min_cnt(meta.cms_freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3)"
@@ -4276,9 +4276,9 @@
           "direct_meters" : null,
           "action_ids" : [15],
           "actions" : ["MyEgress.min_cnt"],
-          "base_default_next" : "tbl_ES_heavy555",
+          "base_default_next" : "tbl_simple_sketch555",
           "next_tables" : {
-            "MyEgress.min_cnt" : "tbl_ES_heavy555"
+            "MyEgress.min_cnt" : "tbl_simple_sketch555"
           },
           "default_entry" : {
             "action_id" : 15,
@@ -4288,10 +4288,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy555",
+          "name" : "tbl_simple_sketch555",
           "id" : 16,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 555,
             "column" : 16,
             "source_fragment" : "cms_r1.write(meta.ha_r1, meta.qc_r1 + meta.my_flow_cnt); ..."
@@ -4304,10 +4304,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [23],
-          "actions" : ["ES_heavy555"],
+          "actions" : ["simple_sketch555"],
           "base_default_next" : "tbl_min_cnt_0",
           "next_tables" : {
-            "ES_heavy555" : "tbl_min_cnt_0"
+            "simple_sketch555" : "tbl_min_cnt_0"
           },
           "default_entry" : {
             "action_id" : 23,
@@ -4320,7 +4320,7 @@
           "name" : "tbl_min_cnt_0",
           "id" : 17,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 564,
             "column" : 16,
             "source_fragment" : "min_cnt(meta.cms_freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3)"
@@ -4349,7 +4349,7 @@
           "name" : "MyEgress.cms_debug",
           "id" : 18,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 384,
             "column" : 10,
             "source_fragment" : "cms_debug"
@@ -4427,7 +4427,7 @@
           "name" : "MyEgress.cq.count_debug",
           "id" : 19,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 271,
             "column" : 10,
             "source_fragment" : "count_debug"
@@ -4460,9 +4460,9 @@
           "direct_meters" : null,
           "action_ids" : [5],
           "actions" : ["NoAction"],
-          "base_default_next" : "tbl_ES_heavy301",
+          "base_default_next" : "tbl_simple_sketch301",
           "next_tables" : {
-            "NoAction" : "tbl_ES_heavy301"
+            "NoAction" : "tbl_simple_sketch301"
           },
           "default_entry" : {
             "action_id" : 5,
@@ -4472,10 +4472,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy301",
+          "name" : "tbl_simple_sketch301",
           "id" : 20,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 301,
             "column" : 8,
             "source_fragment" : "bit<1> has_lp = 1w1; ..."
@@ -4488,10 +4488,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [26],
-          "actions" : ["ES_heavy301"],
+          "actions" : ["simple_sketch301"],
           "base_default_next" : "node_31",
           "next_tables" : {
-            "ES_heavy301" : "node_31"
+            "simple_sketch301" : "node_31"
           },
           "default_entry" : {
             "action_id" : 26,
@@ -4501,10 +4501,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy339",
+          "name" : "tbl_simple_sketch339",
           "id" : 21,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 339,
             "column" : 19,
             "source_fragment" : "= ha_tuple.p_vote; ..."
@@ -4517,10 +4517,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [25],
-          "actions" : ["ES_heavy339"],
+          "actions" : ["simple_sketch339"],
           "base_default_next" : "node_33",
           "next_tables" : {
-            "ES_heavy339" : "node_33"
+            "simple_sketch339" : "node_33"
           },
           "default_entry" : {
             "action_id" : 25,
@@ -4530,10 +4530,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy345",
+          "name" : "tbl_simple_sketch345",
           "id" : 22,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 345,
             "column" : 23,
             "source_fragment" : "="
@@ -4546,10 +4546,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [24],
-          "actions" : ["ES_heavy345"],
+          "actions" : ["simple_sketch345"],
           "base_default_next" : "node_35",
           "next_tables" : {
-            "ES_heavy345" : "node_35"
+            "simple_sketch345" : "node_35"
           },
           "default_entry" : {
             "action_id" : 24,
@@ -4559,10 +4559,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy356",
+          "name" : "tbl_simple_sketch356",
           "id" : 23,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 356,
             "column" : 12,
             "source_fragment" : "hash(ha_cms_r1, HashAlgorithm.crc16, 10w0, ..."
@@ -4575,10 +4575,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [27],
-          "actions" : ["ES_heavy356"],
+          "actions" : ["simple_sketch356"],
           "base_default_next" : "tbl_cq_min_cnt",
           "next_tables" : {
-            "ES_heavy356" : "tbl_cq_min_cnt"
+            "simple_sketch356" : "tbl_cq_min_cnt"
           },
           "default_entry" : {
             "action_id" : 27,
@@ -4591,7 +4591,7 @@
           "name" : "tbl_cq_min_cnt",
           "id" : 24,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 367,
             "column" : 12,
             "source_fragment" : "min_cnt(lp_est, query_r1, query_r2, query_r3)"
@@ -4605,9 +4605,9 @@
           "direct_meters" : null,
           "action_ids" : [9],
           "actions" : ["MyEgress.cq.min_cnt"],
-          "base_default_next" : "tbl_ES_heavy370",
+          "base_default_next" : "tbl_simple_sketch370",
           "next_tables" : {
-            "MyEgress.cq.min_cnt" : "tbl_ES_heavy370"
+            "MyEgress.cq.min_cnt" : "tbl_simple_sketch370"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -4617,10 +4617,10 @@
           }
         },
         {
-          "name" : "tbl_ES_heavy370",
+          "name" : "tbl_simple_sketch370",
           "id" : 25,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 370,
             "column" : 14,
             "source_fragment" : "= hp_est + lp_est; ..."
@@ -4633,10 +4633,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [28],
-          "actions" : ["ES_heavy370"],
+          "actions" : ["simple_sketch370"],
           "base_default_next" : "MyEgress.count_query_debug",
           "next_tables" : {
-            "ES_heavy370" : "MyEgress.count_query_debug"
+            "simple_sketch370" : "MyEgress.count_query_debug"
           },
           "default_entry" : {
             "action_id" : 28,
@@ -4649,7 +4649,7 @@
           "name" : "MyEgress.count_query_debug",
           "id" : 26,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 420,
             "column" : 10,
             "source_fragment" : "count_query_debug"
@@ -4694,7 +4694,7 @@
           "name" : "node_8",
           "id" : 1,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 482,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.protocol != QUERY_PROTOCOL"
@@ -4720,7 +4720,7 @@
           "name" : "node_12",
           "id" : 2,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 493,
             "column" : 16,
             "source_fragment" : "meta.ha_tuple.flowID == meta.my_flowID"
@@ -4739,14 +4739,14 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy494",
+          "true_next" : "tbl_simple_sketch494",
           "false_next" : "node_14"
         },
         {
           "name" : "node_14",
           "id" : 3,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 498,
             "column" : 16,
             "source_fragment" : "meta.ha_tuple.flowID == IDLE_HEAVY_COUNTER_FLOWID"
@@ -4765,14 +4765,14 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy500",
-          "false_next" : "tbl_ES_heavy507"
+          "true_next" : "tbl_simple_sketch500",
+          "false_next" : "tbl_simple_sketch507"
         },
         {
           "name" : "node_18",
           "id" : 4,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 513,
             "column" : 16,
             "source_fragment" : "meta.ha_tuple.p_vote * EVICT_THRESHOLD <= meta.ha_tuple.total_vote"
@@ -4811,14 +4811,14 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy515",
+          "true_next" : "tbl_simple_sketch515",
           "false_next" : "MyEgress.heavy_part_debug"
         },
         {
           "name" : "node_22",
           "id" : 5,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 542,
             "column" : 16,
             "source_fragment" : "is_heavy_processed == 1w0"
@@ -4844,7 +4844,7 @@
           "name" : "node_31",
           "id" : 6,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 335,
             "column" : 11,
             "source_fragment" : "ha_tuple.flowID == flowID"
@@ -4863,14 +4863,14 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy339",
+          "true_next" : "tbl_simple_sketch339",
           "false_next" : "node_35"
         },
         {
           "name" : "node_33",
           "id" : 7,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 342,
             "column" : 15,
             "source_fragment" : "ha_tuple.flag == 1w1"
@@ -4889,14 +4889,14 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy345",
+          "true_next" : "tbl_simple_sketch345",
           "false_next" : "node_35"
         },
         {
           "name" : "node_35",
           "id" : 8,
           "source_info" : {
-            "filename" : "ES_heavy.p4",
+            "filename" : "simple_sketch.p4",
             "line" : 353,
             "column" : 11,
             "source_fragment" : "has_lp == 1w1"
@@ -4915,8 +4915,8 @@
               }
             }
           },
-          "true_next" : "tbl_ES_heavy356",
-          "false_next" : "tbl_ES_heavy370"
+          "true_next" : "tbl_simple_sketch356",
+          "false_next" : "tbl_simple_sketch370"
         }
       ]
     }
@@ -4926,7 +4926,7 @@
       "name" : "cksum",
       "id" : 0,
       "source_info" : {
-        "filename" : "ES_heavy.p4",
+        "filename" : "simple_sketch.p4",
         "line" : 587,
         "column" : 1,
         "source_fragment" : "update_checksum( ..."
@@ -4989,7 +4989,7 @@
       ["standard_metadata", "priority"]
     ]
   ],
-  "program" : "ES_heavy.p4",
+  "program" : "simple_sketch.p4",
   "__meta__" : {
     "version" : [2, 23],
     "compiler" : "https://github.com/p4lang/p4c"
