@@ -249,72 +249,6 @@ control MyIngress(inout CAIDA_headers hdr,
 }
 
 
-control CountQuery(in     ip4Addr_t   srcIP,
-                   in     ip4Addr_t   dstIP, 
-                   in     bit<8>      ip_protocol,
-                   inout  bit<32>     count){
-    table count_debug{
-        key = {
-            srcIP: exact;
-            dstIP: exact;
-            ip_protocol: exact;
-        }
-        actions = {
-            NoAction;
-        }
-        default_action=NoAction();
-    }
-
-    action min_cnt(inout bit<32> mincnt, in bit<32> cnt1, in bit<32> cnt2,
-                    in bit<32> cnt3) {
-        if(cnt1 < cnt2) {
-            mincnt = cnt1;
-        } else {
-            mincnt = cnt2;
-        }
-
-        if(mincnt > cnt3) {
-            mincnt = cnt3;
-        }
-    }
-
-    apply {
-        count_debug.apply();
-        // TODO: using 3-tuple to get the count estimation,
-        // save the answer to count
-
-        bit<72> flowID;
-
-        flowID[31:0] = srcIP;
-        flowID[63:32] = dstIP;
-        flowID[71:64] = ip_protocol;
-
-        // hash position in heavy part and CMS
-        bit<32> ha_cms_r1 = 32w0;
-        bit<32> ha_cms_r2 = 32w0;
-        bit<32> ha_cms_r3 = 32w0;
-
-        // hash bucket in heavy part and CMS
-        bit<32> query_r1 = 32w0;
-        bit<32> query_r2 = 32w0;
-        bit<32> query_r3 = 32w0;
-
-
-        // get the bucket in 3 rows of CMS
-        hash(ha_cms_r1, HashAlgorithm.crc16, HASH_BASE_r1,
-                {flowID, HASH_SEED_r1}, HASH_MAX);
-        hash(ha_cms_r2, HashAlgorithm.crc16, HASH_BASE_r2,
-                {flowID, HASH_SEED_r2}, HASH_MAX);
-        hash(ha_cms_r3, HashAlgorithm.crc16, HASH_BASE_r3,
-                {flowID, HASH_SEED_r3}, HASH_MAX);
-
-        cms_r1.read(query_r1, ha_cms_r1);
-        cms_r2.read(query_r2, ha_cms_r2);
-        cms_r3.read(query_r3, ha_cms_r3);
-
-        min_cnt(count, query_r1, query_r2, query_r3);
-    }
-}
 
 /*************************************************************************
 ****************  E G R E S S   P R O C E S S I N G   *******************
@@ -323,7 +257,6 @@ control CountQuery(in     ip4Addr_t   srcIP,
 control MyEgress(inout CAIDA_headers hdr,
                  inout custom_metadata_t meta,
                  inout standard_metadata_t standard_metadata) {
-    CountQuery() cq;
 
     // a fake table for cms table debug in bmv2
     table cms_debug{
@@ -348,7 +281,7 @@ control MyEgress(inout CAIDA_headers hdr,
     // a debug table for count query
     table count_query_debug {
         key = {
-            // meta.freq_estimate: exact;
+            meta.freq_estimate: exact;
             hdr.query.count: exact;
             hdr.query.flow_proto: exact;
         }
@@ -397,10 +330,9 @@ control MyEgress(inout CAIDA_headers hdr,
     }
 
     apply {
+        compute_flow_id();
+        compute_reg_index(); // need flowid
         if (hdr.ipv4.protocol != QUERY_PROTOCOL){
-            compute_flow_id();
-            compute_reg_index(); // need flowid
-
             cms_r1.read(meta.qc_r1, meta.ha_r1);
             cms_r2.read(meta.qc_r2, meta.ha_r2);
             cms_r3.read(meta.qc_r3, meta.ha_r3);
@@ -421,10 +353,12 @@ control MyEgress(inout CAIDA_headers hdr,
             cms_debug.apply();
         } // end insertion in CountMin Sketch
         else {
-
 /********************Query Code Start********************/
-            cq.apply(hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.query.flow_proto, meta.freq_estimate);
-            //cq.apply(hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.query.flow_proto, hdr.query.count);
+            cms_r1.read(meta.qc_r1, meta.ha_r1);
+            cms_r2.read(meta.qc_r2, meta.ha_r2);
+            cms_r3.read(meta.qc_r3, meta.ha_r3);
+
+            min_cnt(meta.freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3);
             hdr.query.count = (bit<16>)meta.freq_estimate;
             count_query_debug.apply();
 /********************Query Code End********************/
