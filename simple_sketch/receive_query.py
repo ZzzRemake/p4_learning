@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+import socket
 import sys
 import struct
 
-from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr
+from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr, bind_layers
 from scapy.all import Packet, IPOption
 from scapy.all import PacketListField, ShortField, IntField, LongField, BitField, FieldListField, FieldLenField, ByteField
 from scapy.all import IP, UDP, Raw
@@ -20,31 +21,27 @@ def get_if():
         exit(1)
     return iface
 
-class SwitchTrace(Packet):
-    fields_desc = [ IntField("swid", 0),
-                  IntField("qdepth", 0)]
-    def extract_padding(self, p):
-                return "", p
 
-class IPOption_MRI(IPOption):
-    name = "MRI"
-    option = 31
-    fields_desc = [ _IPOption_HDR,
-                    FieldLenField("length", None, fmt="B",
-                                  length_of="swtraces",
-                                  adjust=lambda pkt,l:l*2+4),
-                    ShortField("count", 0),
-                    PacketListField("swtraces",
-                                   [],
-                                   SwitchTrace,
-                                   count_from=lambda pkt:(pkt.count*1)) ]
+class L4Query(Packet):
+    name = "L4Query"
+    fields_desc = [
+        BitField("src_ip", 0, 32), 
+        BitField("dst_ip", 0, 32),      # 目的 IP (32-bit)
+        BitField("src_port", 0, 16),    # 源端口 (16-bit)
+        BitField("dst_port", 0, 16),    # 目的端口 (16-bit)
+        BitField("protocol", 0, 8),     # 协议号 (8-bit)
+        ByteField("query_type", 0),
+        ShortField("query_value", 0),
+    ]
 
-class IPOption_QUERY(IPOption):
-    name = "QUERY"
-    option = 31
-    fields_desc = [ _IPOption_HDR,
-                    ShortField("count", 0),
-                    ByteField("flow_proto", 0)]
+bind_layers(IP, L4Query, proto=144)
+
+IPV4_QUERY_PROTO = 144
+QUERY_COUNT_PACKET = 0
+
+
+def ip2num(ip):
+    return socket.ntohl(struct.unpack("I",socket.inet_aton(str(ip)))[0]) 
 
 def handle_pkt(pkt):
     print("got a packet")

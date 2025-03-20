@@ -4,7 +4,7 @@
 
 const bit<8>    PROTO_UDP = 0x11;
 const bit<8>    PROTO_TCP = 0x06;
-const bit<8>    PROTO_QUERY = 63;
+const bit<8>    PROTO_QUERY = 144;
 
 const bit<16>   TYPE_IPV4 = 0x800;
 
