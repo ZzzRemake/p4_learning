@@ -6,7 +6,7 @@
     {
       "table": "MyIngress.ipv4_static",
       "default_action": true,
-      "action_name": "MyIngress.caida_forward",
+      "action_name": "MyIngress.sketch_forward",
       "action_params": {
          "port": 4
        }

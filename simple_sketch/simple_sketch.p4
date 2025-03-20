@@ -2,12 +2,14 @@
 #include <core.p4>
 #include <v1model.p4>
 
-const bit<8>  UDP_PROTOCOL = 0x11;
-const bit<8>  TCP_PROTOCOL = 0x06;
-const bit<8>  QUERY_PROTOCOL = 63;
+const bit<8>    PROTO_UDP = 0x11;
+const bit<8>    PROTO_TCP = 0x06;
+const bit<8>    PROTO_QUERY = 63;
 
-const bit<16> TYPE_IPV4 = 0x800;
-const bit<5>  IPV4_OPTION_QUERY = 31;
+const bit<16>   TYPE_IPV4 = 0x800;
+
+const bit<8>    QUERY_COUNT_PACKET = 0x00;
+// TODO: maybe other query.
 
 const bit<32> FLOW_TABLE_SIZE_EACH = 1024;
 
@@ -43,8 +45,10 @@ register<bit<32> >(FLOW_TABLE_SIZE_EACH) cms_r3;
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
 typedef bit<32> ip4Addr_t;
+typedef bit<16> port_t;
 typedef bit<32> switchID_t;
 typedef bit<32> qdepth_t;
+typedef bit<104> flowID_t;
 
 header ethernet_t {
     macAddr_t dstAddr;
@@ -67,49 +71,60 @@ header ipv4_t {
     ip4Addr_t dstAddr;
 }
 
-header ipv4_option_t {
-    bit<1> copyFlag;
-    bit<2> optClass;
-    bit<5> option;
-    //bit<8> optionLength;
+// standard tcp
+header tcp_t {
+    bit<16> srcPort;
+    bit<16> dstPort;
+    bit<32> seqNo;
+    bit<32> ackNo;
+    bit<4>  dataOffset;
+    bit<4>  res;
+    bit<8>  flags;
+    bit<16> window;
+    bit<16> checksum;
+    bit<16> urgentPtr;
+}
+
+// standard udp
+header udp_t {
+    bit<16> srcPort;
+    bit<16> dstPort;
+    bit<16> length_;
+    bit<16> checksum;
 }
 
 header query_t {
-    bit<16>  count;
-    bit<8>   flow_proto;
+    flowID_t flowID;
+    bit<8>   query_type;
+    bit<16>  query_value;
 }
 
 struct metadata {
 }
 
+
 struct headers {
     ethernet_t         ethernet;
     ipv4_t             ipv4;
+    tcp_t              tcp;
+    udp_t              udp;
 }
 
-struct CAIDA_headers {
-    ethernet_t         ethernet;
-    ipv4_t             ipv4;
-    ipv4_option_t      ipv4_option;
-    query_t            query;
-}
-
-// tuple in the heavy part of Elastic Sketch
-struct heavy_tuple {
-    bit<72> flowID;
-    bit<32>  p_vote;
-    bit<1>   flag;
-    bit<32>  total_vote;
-}
 
 struct custom_metadata_t {
     // five tuple: FlowId
     ip4Addr_t srcIP;
     ip4Addr_t dstIP;
+    port_t   srcPort;
+    port_t   dstPort;
     bit<8>    protocol;
 
-    bit<72> my_flowID;
+    // sketch used.
+    flowID_t my_flowID;
     bit<32>  my_flow_cnt;
+
+    flowID_t query_flowID;
+    bit<8> query_type;
 
     // hash address in row 1
     bit<32> ha_r1;
@@ -136,7 +151,7 @@ error { IPHeaderTooShort }
 *************************************************************************/
 
 parser MyParser(packet_in packet,
-                out CAIDA_headers hdr,
+                out headers hdr,
                 inout custom_metadata_t meta,
                 inout standard_metadata_t standard_metadata) {
 
@@ -160,22 +175,34 @@ parser MyParser(packet_in packet,
 
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
+        meta.srcIP = hdr.ipv4.srcAddr;
+        meta.dstIP = hdr.ipv4.dstAddr;
+        meta.protocol = hdr.ipv4.protocol;
         transition select(hdr.ipv4.protocol) {
-            QUERY_PROTOCOL       : parse_ipv4_option;
+            PROTO_TCP         : parse_
+            PROTO_QUERY       : parse_ipv4_option;
             default              : accept;
         }
     }
 
-    state parse_ipv4_option {
-        packet.extract(hdr.ipv4_option);
-        transition select(hdr.ipv4_option.option) {
-            IPV4_OPTION_QUERY: parse_query;
-            default: accept;
-        }
+    state parse_tcp {
+        packet.extract(hdr.tcp);
+        metadata.srcPort = hdr.tcp.srcPort;
+        metadata.dstPort = hdr.tcp.dstPort;
+        transition accept;
+    }
+
+    state parse_udp {
+        packet.extract(hdr.udp);
+        metadata.srcPort = hdr.udp.srcPort;
+        metadata.dstPort = hdr.udp.dstPort;
+        transition accept;
     }
 
     state parse_query {
         packet.extract(hdr.query);
+        metadata.query_flowID = hdr.query.query_flowID;
+        metadata.query_type = hdr.query.query_type;
         transition accept;
     }
 }
@@ -185,7 +212,7 @@ parser MyParser(packet_in packet,
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
 *************************************************************************/
 
-control MyVerifyChecksum(inout CAIDA_headers hdr, inout custom_metadata_t meta) {   
+control MyVerifyChecksum(inout headers hdr, inout custom_metadata_t meta) {   
     apply {  }
 }
 
@@ -194,7 +221,7 @@ control MyVerifyChecksum(inout CAIDA_headers hdr, inout custom_metadata_t meta) 
 **************  I N G R E S S   P R O C E S S I N G   *******************
 *************************************************************************/
 
-control MyIngress(inout CAIDA_headers hdr,
+control MyIngress(inout headers hdr,
                   inout custom_metadata_t meta,
                   inout standard_metadata_t standard_metadata) {
     action drop() {
@@ -219,7 +246,7 @@ control MyIngress(inout CAIDA_headers hdr,
         standard_metadata.egress_spec = port;
     }
 
-    action caida_forward(egressSpec_t port) {
+    action sketch_forward(egressSpec_t port) {
         standard_metadata.egress_spec = port;
     }
 
@@ -229,7 +256,7 @@ control MyIngress(inout CAIDA_headers hdr,
         }
         actions = {
             query_forward;
-            caida_forward;
+            sketch_forward;
             NoAction;
         }
         default_action = NoAction;
@@ -238,8 +265,8 @@ control MyIngress(inout CAIDA_headers hdr,
     apply {
         // Do nothing, CAIDA flows have no routing
         // Only process UDP and TCP
-        if (hdr.ipv4.protocol != UDP_PROTOCOL && hdr.ipv4.protocol != TCP_PROTOCOL 
-                && hdr.ipv4.protocol != QUERY_PROTOCOL) {
+        if (hdr.ipv4.protocol != PROTO_UDP && hdr.ipv4.protocol != PROTO_TCP 
+                && hdr.ipv4.protocol != PROTO_QUERY) {
             drop();
         } else {
             ip_debug.apply();
@@ -254,7 +281,7 @@ control MyIngress(inout CAIDA_headers hdr,
 ****************  E G R E S S   P R O C E S S I N G   *******************
 *************************************************************************/
 
-control MyEgress(inout CAIDA_headers hdr,
+control MyEgress(inout headers hdr,
                  inout custom_metadata_t meta,
                  inout standard_metadata_t standard_metadata) {
 
@@ -294,14 +321,11 @@ control MyEgress(inout CAIDA_headers hdr,
     // joint the five tuples into FlowID
     // 五元组在哪我请问了
     action compute_flow_id () {
-        meta.srcIP = hdr.ipv4.srcAddr;
-        meta.dstIP = hdr.ipv4.dstAddr;
-        meta.protocol = hdr.ipv4.protocol;
-
-        meta.my_flowID[31:0]=hdr.ipv4.srcAddr;
-        meta.my_flowID[63:32]=hdr.ipv4.dstAddr;
-        meta.my_flowID[71:64]=hdr.ipv4.protocol;
-
+        meta.my_flowID[31:0] = hdr.ipv4.srcAddr;
+        meta.my_flowID[63:32] = hdr.ipv4.dstAddr;
+        meta.my_flowID[79:64] = meta.srcPort;
+        meta.my_flowID[95:80] = meta.dstPort;
+        meta.my_flowID[103:96]=hdr.ipv4.protocol;
 
         meta.my_flow_cnt = 32w1;
     }
@@ -330,9 +354,9 @@ control MyEgress(inout CAIDA_headers hdr,
     }
 
     apply {
-        compute_flow_id();
-        compute_reg_index(); // need flowid
-        if (hdr.ipv4.protocol != QUERY_PROTOCOL){
+        if (hdr.ipv4.protocol != PROTO_QUERY){
+            compute_flow_id();
+            compute_reg_index(); // need flowid
             cms_r1.read(meta.qc_r1, meta.ha_r1);
             cms_r2.read(meta.qc_r2, meta.ha_r2);
             cms_r3.read(meta.qc_r3, meta.ha_r3);
@@ -353,15 +377,16 @@ control MyEgress(inout CAIDA_headers hdr,
             cms_debug.apply();
         } // end insertion in CountMin Sketch
         else {
-/********************Query Code Start********************/
-            cms_r1.read(meta.qc_r1, meta.ha_r1);
-            cms_r2.read(meta.qc_r2, meta.ha_r2);
-            cms_r3.read(meta.qc_r3, meta.ha_r3);
+            if (hdr.query.query_type == QUERY_COUNT_PACKET) {
+                compute_reg_index(); // need flowid
+                cms_r1.read(meta.qc_r1, meta.ha_r1);
+                cms_r2.read(meta.qc_r2, meta.ha_r2);
+                cms_r3.read(meta.qc_r3, meta.ha_r3);
 
-            min_cnt(meta.freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3);
-            hdr.query.count = (bit<16>)meta.freq_estimate;
-            count_query_debug.apply();
-/********************Query Code End********************/
+                min_cnt(meta.freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3);
+                hdr.query.count = (bit<16>)meta.freq_estimate;
+                count_query_debug.apply();                
+            }
         }
     }
 }
@@ -370,7 +395,7 @@ control MyEgress(inout CAIDA_headers hdr,
 *************   C H E C K S U M    C O M P U T A T I O N   **************
 *************************************************************************/
 
-control MyComputeChecksum(inout CAIDA_headers hdr, inout custom_metadata_t meta) {
+control MyComputeChecksum(inout headers hdr, inout custom_metadata_t meta) {
      apply {
 	update_checksum(
 	    hdr.ipv4.isValid(),
@@ -394,13 +419,12 @@ control MyComputeChecksum(inout CAIDA_headers hdr, inout custom_metadata_t meta)
 ***********************  D E P A R S E R  *******************************
 *************************************************************************/
 
-control MyDeparser(packet_out packet, in CAIDA_headers hdr) {
+control MyDeparser(packet_out packet, in headers hdr) {
     apply {
-        //if(hdr.ipv4.protocol == QUERY_PROTOCOL){
-            packet.emit(hdr.ethernet);
-        //}
+        packet.emit(hdr.ethernet);
         packet.emit(hdr.ipv4);
-        packet.emit(hdr.ipv4_option);
+        packet.emit(hdr.tcp);
+        packet.emit(hdr.udp);
         packet.emit(hdr.query);
     }
 }
