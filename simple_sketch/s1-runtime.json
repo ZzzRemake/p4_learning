@@ -14,7 +14,7 @@
   	{
       "table": "MyIngress.ipv4_static",
       "match": {
-        "hdr.ipv4.protocol": 63
+        "hdr.ipv4.protocol": 144
       },
       "action_name": "MyIngress.query_forward",
       "action_params": {

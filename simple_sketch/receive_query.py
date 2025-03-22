@@ -34,10 +34,10 @@ class L4Query(Packet):
         ShortField("query_value", 0),
     ]
 
-bind_layers(IP, L4Query, proto=144)
-
 IPV4_QUERY_PROTO = 144
 QUERY_COUNT_PACKET = 0
+
+bind_layers(IP, L4Query, proto=IPV4_QUERY_PROTO)
 
 
 def ip2num(ip):

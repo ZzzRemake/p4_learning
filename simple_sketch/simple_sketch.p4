@@ -108,11 +108,11 @@ struct headers {
     ipv4_t             ipv4;
     tcp_t              tcp;
     udp_t              udp;
+    query_t            query;
 }
 
 
 struct custom_metadata_t {
-    // five tuple: FlowId
     ip4Addr_t srcIP;
     ip4Addr_t dstIP;
     port_t   srcPort;
@@ -179,30 +179,31 @@ parser MyParser(packet_in packet,
         meta.dstIP = hdr.ipv4.dstAddr;
         meta.protocol = hdr.ipv4.protocol;
         transition select(hdr.ipv4.protocol) {
-            PROTO_TCP         : parse_
-            PROTO_QUERY       : parse_ipv4_option;
+            PROTO_TCP         : parse_tcp;
+            PROTO_UDP         : parse_udp;
+            PROTO_QUERY       : parse_query;
             default              : accept;
         }
     }
 
     state parse_tcp {
         packet.extract(hdr.tcp);
-        metadata.srcPort = hdr.tcp.srcPort;
-        metadata.dstPort = hdr.tcp.dstPort;
+        meta.srcPort = hdr.tcp.srcPort;
+        meta.dstPort = hdr.tcp.dstPort;
         transition accept;
     }
 
     state parse_udp {
         packet.extract(hdr.udp);
-        metadata.srcPort = hdr.udp.srcPort;
-        metadata.dstPort = hdr.udp.dstPort;
+        meta.srcPort = hdr.udp.srcPort;
+        meta.dstPort = hdr.udp.dstPort;
         transition accept;
     }
 
     state parse_query {
         packet.extract(hdr.query);
-        metadata.query_flowID = hdr.query.query_flowID;
-        metadata.query_type = hdr.query.query_type;
+        meta.query_flowID = hdr.query.flowID;
+        meta.query_type = hdr.query.query_type;
         transition accept;
     }
 }
@@ -233,8 +234,8 @@ control MyIngress(inout headers hdr,
             hdr.ipv4.srcAddr: exact;
             hdr.ipv4.dstAddr: exact;
             hdr.ipv4.protocol: exact;
-            hdr.query.count: exact;
-            hdr.query.flow_proto: exact;
+            hdr.query.query_type: exact;
+            hdr.query.query_value: exact;
         }
         actions = {
             NoAction;
@@ -309,8 +310,8 @@ control MyEgress(inout headers hdr,
     table count_query_debug {
         key = {
             meta.freq_estimate: exact;
-            hdr.query.count: exact;
-            hdr.query.flow_proto: exact;
+            hdr.query.query_type: exact;
+            hdr.query.query_value: exact;
         }
         actions = {
             NoAction;
@@ -321,23 +322,23 @@ control MyEgress(inout headers hdr,
     // joint the five tuples into FlowID
     // 五元组在哪我请问了
     action compute_flow_id () {
-        meta.my_flowID[31:0] = hdr.ipv4.srcAddr;
-        meta.my_flowID[63:32] = hdr.ipv4.dstAddr;
-        meta.my_flowID[79:64] = meta.srcPort;
-        meta.my_flowID[95:80] = meta.dstPort;
-        meta.my_flowID[103:96]=hdr.ipv4.protocol;
+        meta.my_flowID[7:0] = hdr.ipv4.protocol;
+        meta.my_flowID[23:8] = meta.dstPort;
+        meta.my_flowID[39:24] = meta.srcPort;
+        meta.my_flowID[71:40] = hdr.ipv4.dstAddr;
+        meta.my_flowID[103:72]=hdr.ipv4.srcAddr;
 
         meta.my_flow_cnt = 32w1;
     }
 
     // get the hash bucket in each row 
-    action compute_reg_index() {
+    action compute_reg_index(in flowID_t flowID) {
         hash(meta.ha_r1, HashAlgorithm.crc16, HASH_BASE_r1,
-                {meta.my_flowID, HASH_SEED_r1}, HASH_MAX);
+                {flowID, HASH_SEED_r1}, HASH_MAX);
         hash(meta.ha_r2, HashAlgorithm.crc16, HASH_BASE_r2,
-                {meta.my_flowID, HASH_SEED_r2}, HASH_MAX);
+                {flowID, HASH_SEED_r2}, HASH_MAX);
         hash(meta.ha_r3, HashAlgorithm.crc16, HASH_BASE_r3,
-                {meta.my_flowID, HASH_SEED_r3}, HASH_MAX);
+                {flowID, HASH_SEED_r3}, HASH_MAX);
     }
 
     action min_cnt(inout bit<32> mincnt, in bit<32> cnt1, in bit<32> cnt2,
@@ -356,7 +357,7 @@ control MyEgress(inout headers hdr,
     apply {
         if (hdr.ipv4.protocol != PROTO_QUERY){
             compute_flow_id();
-            compute_reg_index(); // need flowid
+            compute_reg_index(meta.my_flowID); // need flowid
             cms_r1.read(meta.qc_r1, meta.ha_r1);
             cms_r2.read(meta.qc_r2, meta.ha_r2);
             cms_r3.read(meta.qc_r3, meta.ha_r3);
@@ -378,13 +379,13 @@ control MyEgress(inout headers hdr,
         } // end insertion in CountMin Sketch
         else {
             if (hdr.query.query_type == QUERY_COUNT_PACKET) {
-                compute_reg_index(); // need flowid
+                compute_reg_index(meta.query_flowID); // need flowid
                 cms_r1.read(meta.qc_r1, meta.ha_r1);
                 cms_r2.read(meta.qc_r2, meta.ha_r2);
                 cms_r3.read(meta.qc_r3, meta.ha_r3);
 
                 min_cnt(meta.freq_estimate, meta.qc_r1, meta.qc_r2, meta.qc_r3);
-                hdr.query.count = (bit<16>)meta.freq_estimate;
+                hdr.query.query_value = (bit<16>)meta.freq_estimate;
                 count_query_debug.apply();                
             }
         }
